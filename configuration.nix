@@ -25,6 +25,17 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # Automatic Updating
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.dates = "weekly";
+
+  # Automatic Cleanup
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than 10d";
+  nix.settings.auto-optimise-store = true;
+
+
   # Enable networking
   # networking.networkmanager.enable = true;
   networking.wireless.networks = {
@@ -202,6 +213,7 @@
     jq
     openvpn
     obs-studio
+    gh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
